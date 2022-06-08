@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CILab implements CILabInterface {
     private String myString;
 
@@ -13,8 +16,12 @@ public class CILab implements CILabInterface {
 
     @Override
     public boolean detectCapitalUse() {
-        return false;
-    }
 
+        String regEx = "^[A-Z]+$";
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher(myString);
+
+        return matcher.groupCount() > 0 ? true : false;
+    }
 }
 
