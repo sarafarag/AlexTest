@@ -1,3 +1,5 @@
+package pack1;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,11 +19,13 @@ public class CILab implements CILabInterface {
     @Override
     public boolean detectCapitalUse() {
 
-        String regEx = "^[A-Z]+$";
-        Pattern pattern = Pattern.compile(regEx);
-        Matcher matcher = pattern.matcher(myString);
-
-        return matcher.groupCount() > 0 ? true : false;
+       for(int i = 0; i < myString.length(); i++){
+           char letter = myString.charAt(i);
+           if(Character.isUpperCase(letter)){
+               return true;
+           }
+       }
+       return false;
     }
 }
 
